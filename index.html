@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+TODO	
+*what is keefer's email?
+*title bar
+-->
+
+<html>
+<head>
+	<h1 id="header"></h1>
+	<title id="title">ifeelnormal</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+	<nav class="sidebar">
+        <a href="#" id="homeButton">
+			<span class="material-symbols-outlined">home</span>
+			&nbsp;home
+		</a>
+		<hr>
+        <a href="#" id ="narrativesButton">
+			<span class="material-symbols-outlined">book_ribbon</span>
+			&nbsp;narratives
+		</a>
+		<hr>
+        <a href="#" id="collagesButton">
+			<span class="material-symbols-outlined">wall_art</span>
+			&nbsp;collages
+		</a>
+		<hr>
+        <a href="#" onclick="joke()">
+			<span class="material-symbols-outlined">lips</span>
+			&nbsp;erotica
+		</a>
+		<hr>
+        <a href="#" id="sayhiButton">
+			<span class="material-symbols-outlined">waving_hand</span>
+			&nbsp;say hi
+			</a>
+    </nav>
+	<div class="main">
+		<section id="home">
+		
+		<div style="display:flex; justify-content:center; width:100%; margin:auto; ">
+			
+			<form style="width:25%;">
+				<h4>font:</h4>
+			<label class="radio-container">
+				<input name="font" type="radio" onclick="changeFont('Georgia')" checked>
+				<span style="font-family: Georgia">Georgia</span>
+			</label>
+			<label class="radio-container">
+				<input name="font" type="radio" onclick="changeFont('Roboto')"><span style="font-family: Roboto">Roboto</span>
+			</label>
+			<label class="radio-container">
+				<input name="font" type="radio" onclick="changeFont('cursive')"><span style="font-family: Cursive">Cursive</span>
+			</label>
+			</form>
+		
+			<form style="width:25%">
+				<h4>colour pallette:</h4>
+			<!--(text color, background color, accent color)-->
+			<label class="radio-container">	
+				<input name="font" type="radio" onclick="changeColor('#EEEEEE', '#666666', '#333333')" checked>greyscale
+			</label>
+			<label class="radio-container">
+				<input name="font" type="radio" onclick="changeColor('#493267','#E3BEA1', '#85A9A4')">desert
+			</label>
+			<label class="radio-container">
+				<input name="font" type="radio" onclick="changeColor('#194E74', '#ADDFF1', '#47D0B0')">ocean
+			</label>
+			</form>
+		</div>
+		
+		</section>
+		
+		<section id="narratives">
+		</section>
+		
+		<section id="collages">
+		</section>
+	
+		<section id="sayhi">
+		
+		<form action="/send_email.php" method=POST>
+			<label for="name">name *</label>
+			<input placeholder="name..." required="true" type="text" id="name" name="name">
+
+			<label for="email">email *</label>
+			<input placeholder="email..." required="true" type="text" id="email" name="email">
+
+			<label for="message">message *</label>
+			<textarea placeholder="message..." required="true" rows="1" oninput="autoGrow(this)"></textarea>
+	  
+			<input type="submit" value="send">
+		</form>
+		</section>
+	
+	</div>
+	
+	 <script src="scripts.js"></script>
+</body>
+<footer>
+	<small>&copy; 2026 Keefer Schoon</small>
+	<a href="https://www.instagram.com/keefer_spoon/?hl=en" target="_blank" rel="noopener noreferrer">instagram</a>
+</footer>
+</html>

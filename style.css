@@ -1,0 +1,206 @@
+:root {
+	--custom-text: #EEEEEE;
+	--custom-background: #666666;
+	--custom-accent:#333333;
+	--custom-font: Georgia;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: var(--custom-font);
+}
+
+h4 { padding-left:10%;}
+
+.radio-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+hr {
+	opacity: 0.5;
+	width:80%;
+}
+
+.sidebar {
+	height: 100vh;/*full height of the viewport*/
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	top: 20%;
+	right: 0;
+	overflow-x: hidden;
+}
+
+.sidebar a {
+	padding: 10%;
+	text-decoration: none;
+	font-size: 22px;
+	color: var(--custom-text);
+	display:flex;
+	font-weight: bold;
+	justify-content:left;
+}
+
+.sidebar a:hover {
+	font-size:26px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.main-content {
+	margin-right: 200px;
+	padding: 15px;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	margin: 5px;
+}
+footer a, small {
+	text-decoration:none;
+	color: var(--custom-text);
+	font-size: 16px;
+	padding: 10px;
+}
+
+
+.material-symbols-outlined { color: var(--custom-accent);}
+
+body {
+	background-color:var(--custom-background);
+	color:var(--custom-text);
+}
+
+section {
+	margin-top: 10%;
+	margin-right: 20%;
+	margin-left: 5%;
+}
+
+
+
+ul li a {
+	font-size:16px;
+	text-decoration:none;
+	color:var(--custom-text);
+	display:block;
+	padding:40px;
+	font-weight:bold;
+}
+
+
+/*say hello page*/
+
+#sayhi {
+	margin: auto;
+}
+
+label,input {
+	display:block;
+	padding:20px;
+	text-align: center;
+}
+
+input[type=text], textarea {
+	background-color: var(--custom-background);
+	color: var(--custom-text);
+	
+	width:50%;
+	margin:auto;
+	
+	border:none;
+	border-bottom: 2px solid var(--custom-text);
+	padding: 5px 0;
+	outline:none;
+	
+	text-align: left;
+}
+
+input[type=submit] {
+	padding: 10px;
+	margin:auto;
+	margin-top: 10px;
+	border-color: var(--custom-text);
+	border-radius:5px;
+	background-color: var(--custom-background);
+	color: var(--custom-text);
+}
+
+textarea {
+	/*An Experimental Property; it does not work in all browsers.
+	  Write own method.*/
+	field-sizing:content;
+	
+	resize:none;
+	margin-left: 25%;
+}
+
+#collages {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.frame {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 30%;
+	border-radius: 5px;
+	background-color: white;
+	margin: 10px;
+}
+
+.frame:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	width: 32%;
+}
+
+.frame img {
+	border-radius: 5px 5px 0 0;
+	width:100%;
+}
+
+.frame h4 {
+	color: var(--custom-accent);
+	text-align: center;
+	width:100%;
+	padding: 5px 0px;
+	margin: auto;
+}
+/* textarea:focus {
+	rows:"1";
+} */
+
+.size-guide:empty {
+  display: none; /* Hide the element if it's empty */
+}
+
+#narratives {
+	margin: 10% auto;
+	width: 60%;
+}
+
+#playback audio {width:100%;}
+
+#playback {
+	display:flex;
+}
+
+#playback img {
+	width: 50%;
+}
+
+#playback article {
+	display: flex;
+	width: 50%;
+	flex-direction: column;
+	justify-content: end;
+}
+
+#header {
+	text-align: center;
+}
