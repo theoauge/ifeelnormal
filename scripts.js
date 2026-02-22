@@ -51,6 +51,17 @@ homeButton.addEventListener("click", function(event){
 narrativesButton.addEventListener("click", function(event){
 	replaceChildAll();
 
+	const imageLinks = ["./narratives/arthur_the_rat/cover_art.jpg", "./narratives/diary_of_a_college_hunk/cover_art.png"];
+
+	const albumsDiv = document.createElement('div');
+	albumsDiv.style.display = "flex";
+	
+	imageLinks.forEach(i => {
+		var image = document.createElement('img');
+		image.src = i;
+		image.style.width = '20%';
+		albumsDiv.append(image);
+	});
 
 	var source_folder = "./narratives/diary_of_a_college_hunk/"; //next in array
 	var source_title = "Diary Of A College Hunk"; //parse from folder name
@@ -58,7 +69,7 @@ narrativesButton.addEventListener("click", function(event){
 
 	source_folder = "./narratives/arthur_the_rat/";
 	source_title = "Arthur The Rat";
-	source_img = source_folder + "arthur_photo.jpg";
+	source_img = source_folder + "cover_art.jpg";
 
 
 	const playbackDiv = document.createElement('div');
@@ -87,6 +98,7 @@ narrativesButton.addEventListener("click", function(event){
 	article2.appendChild(image);
 	playbackDiv.appendChild(article2);
 
+	narrativesPage.appendChild(albumsDiv);
 	narrativesPage.appendChild(playbackDiv);
 
 	document.getElementById("header").innerHTML = "narratives";
@@ -161,9 +173,10 @@ function changeFont(fontName) {
 	document.documentElement.style.setProperty('--custom-font', fontName);
 }
 
-function changeColor(t, b, a) {
+function changeColor(t, g1, g2, a) {
 	document.documentElement.style.setProperty('--custom-text', t);
-	document.documentElement.style.setProperty('--custom-background', b);
+	document.documentElement.style.setProperty('--custom-gradient-1', g1);
+	document.documentElement.style.setProperty('--custom-gradient-2', g2);
 	document.documentElement.style.setProperty('--custom-accent', a);
 }
 
