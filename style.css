@@ -1,7 +1,7 @@
 :root {
 	--custom-text: #EEEEEE;
-	--custom-background: #666666;
 	--custom-accent:#333333;
+	--custom-background: #0A88C5;
 	--custom-font: Georgia;
 }
 
@@ -22,6 +22,7 @@ h4 { padding-left:10%;}
 hr {
 	opacity: 0.5;
 	width:80%;
+	color: var(--custom-text);
 }
 
 .sidebar {
@@ -44,22 +45,22 @@ hr {
 	justify-content:left;
 }
 
-.sidebar a:hover {
-	font-size:26px;
-	margin-top:10px;
-	margin-bottom:10px;
+.button:hover > a, .button:hover > a > span {
+	font-size:30px;
+	justify-content: left;
 }
 
-.main-content {
-	margin-right: 200px;
-	padding: 15px;
+
+
+.main {
+	
 }
 
 footer {
 	position: fixed;
 	bottom: 0;
 	display: flex;
-	margin: 5px;
+	margin-top: 20px;
 }
 footer a, small {
 	text-decoration:none;
@@ -71,10 +72,13 @@ footer a, small {
 
 .material-symbols-outlined { color: var(--custom-accent);}
 
-body {
-	background-color:var(--custom-background);
+html {
+	background-color: var(--custom-background);
+	/*background-image: linear-gradient(114deg, #70EFF1 0%, #0A88C5 100%);*/
 	color:var(--custom-text);
+	background-size: auto 100%;
 }
+
 
 section {
 	margin-top: 0;
@@ -192,6 +196,8 @@ textarea {
 
 #playback img {
 	width: 50%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
 }
 
 #playback article {

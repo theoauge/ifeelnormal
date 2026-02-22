@@ -45,7 +45,7 @@ function show(element) {
 homeButton.addEventListener("click", function(event){
 	replaceChildAll();
 	homePage.hidden = false;
-	document.getElementById("header").innerHTML = "welcome to normal";
+	document.getElementById("header").innerHTML = "ifeelnormal.com";
 });
 
 narrativesButton.addEventListener("click", function(event){
@@ -146,7 +146,7 @@ sayhiButton.addEventListener("click", function(event){
 window.addEventListener('load', function(){
 	replaceChildAll();
 	homePage.hidden = false;
-	document.getElementById("header").innerHTML = "welcome to normal";
+	document.getElementById("header").innerHTML = "ifeelnormal.com";
 });
 
 function replaceChildAll() {

@@ -14,61 +14,54 @@ commit to git
 </head>
 <body>
 	<nav class="sidebar">
-        <a href="#" id="homeButton">
+		<div class="button">
+			<a href="#" id="homeButton">
 			<span class="material-symbols-outlined">home</span>
 			&nbsp;home
 		</a>
+		</div>
 		<hr>
+		<div class="button">
         <a href="#" id ="narrativesButton">
 			<span class="material-symbols-outlined">book_ribbon</span>
 			&nbsp;narratives
 		</a>
+		</div>
 		<hr>
+		<div class="button">
         <a href="#" id="collagesButton">
 			<span class="material-symbols-outlined">wall_art</span>
 			&nbsp;collages
 		</a>
+		</div>
 		<hr>
+		<div class="button">
 		<a href="#" onclick="joke()">
 			<span class="material-symbols-outlined">lips</span>
 			&nbsp;erotica
 		</a>
+		</div>
 		<hr>
+		<div class="button">
         <a href="#" id="sayhiButton">
 			<span class="material-symbols-outlined">waving_hand</span>
 			&nbsp;say hi
-			</a>
+		</a>
+		</div>
     </nav>
 	<div class="main">
 		<section id="home">
 		
 		<div style="display:flex; justify-content:center; width:100%; margin:auto; ">
-			
-			<form style="width:25%;">
-				<h4>font:</h4>
-			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeFont('Georgia')" checked>
-				<span style="font-family: Georgia">Georgia</span>
-			</label>
-			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeFont('Roboto')"><span style="font-family: Roboto">Roboto</span>
-			</label>
-			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeFont('cursive')"><span style="font-family: Cursive">Cursive</span>
-			</label>
-			</form>
-		
-			<form style="width:25%">
+					
+			<form style="width:50%">
 				<h4>colour pallette:</h4>
 			<!--(text color, background color, accent color)-->
-			<label class="radio-container">	
-				<input name="font" type="radio" onclick="changeColor('#EEEEEE', '#666666', '#333333')" checked>greyscale
-			</label>
 			<label class="radio-container">
 				<input name="font" type="radio" onclick="changeColor('#493267','#E3BEA1', '#85A9A4')">desert
 			</label>
 			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeColor('#194E74', '#ADDFF1', '#47D0B0')">ocean
+				<input name="font" type="radio" onclick="changeColor('#EEEEEE', '#0A88C5', '#333333')">original
 			</label>
 			</form>
 		</div>
