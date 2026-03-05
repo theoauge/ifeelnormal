@@ -6,7 +6,7 @@ const collagesButton = document.getElementById("collagesButton");
 const collagesPage = document.getElementById("collages");
 const sayhiButton = document.getElementById("sayhiButton");
 const sayhiPage = document.getElementById("sayhi");
-
+const narrativesImg = document.getElementsByClassName("album");
 
 
 function autoGrow(element) {
@@ -33,14 +33,6 @@ function joke() {
 	alert("nice try")
 }
 
-function hide(element) {
-	element.display = none;
-}
-
-function show(element) {
-	element.display = block;
-}
-
 //combine with window listener
 homeButton.addEventListener("click", function(event){
 	replaceChildAll();
@@ -48,29 +40,38 @@ homeButton.addEventListener("click", function(event){
 	document.getElementById("header").innerHTML = "ifeelnormal.com";
 });
 
+function ToTitleCase(str) {
+	return str.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
+}
+
+class Narrative {
+	
+	constructor(srcFolder, img) {
+		this.folder = srcFolder;
+
+		this.title = srcFolder.replaceAll('_', ' ').replaceAll('/', '').replaceAll('.','').replace('narratives', '');
+		this.title = ToTitleCase(this.title);
+
+		this.imgLink = img;
+		this.tracks = [];
+		this.mp3;
+	}
+}
+
 narrativesButton.addEventListener("click", function(event){
 	replaceChildAll();
 
-	const imageLinks = ["./narratives/arthur_the_rat/cover_art.jpg", "./narratives/diary_of_a_college_hunk/cover_art.png"];
+	const diaryPath = './narratives/diary_of_a_college_hunk/';
+	const diary = new Narrative(diaryPath,diaryPath + "cover_art.png");
+
+	const hubPath = './narratives/hub_51/';
+	const hub51 = new Narrative(hubPath, hubPath + "cover_art.jpg");
+
+	const sixFlagsPath = './narratives/six_flags_great_america/';
+	const sixFlags = new Narrative(sixFlagsPath, sixFlagsPath + "cover_art.jpg");
 
 	const albumsDiv = document.createElement('div');
 	albumsDiv.style.display = "flex";
-	
-	imageLinks.forEach(i => {
-		var image = document.createElement('img');
-		image.src = i;
-		image.style.width = '20%';
-		albumsDiv.append(image);
-	});
-
-	var source_folder = "./narratives/diary_of_a_college_hunk/"; //next in array
-	var source_title = "Diary Of A College Hunk"; //parse from folder name
-	var source_img = source_folder + "cover_art.png"; //find only .png in folder
-
-	source_folder = "./narratives/arthur_the_rat/";
-	source_title = "Arthur The Rat";
-	source_img = source_folder + "cover_art.jpg";
-
 
 	const playbackDiv = document.createElement('div');
 	playbackDiv.id = "playback";
@@ -78,21 +79,20 @@ narrativesButton.addEventListener("click", function(event){
 	const article1 = document.createElement('article');
 
 	const title = document.createElement('h3');
-	title.textContent = source_title;
+	title.id = "audio_title";
 
 	article1.appendChild(title);
 
 	var audioplayer = document.createElement('audio');
+	audioplayer.id = "audio_player";
 	audioplayer.controls = true;
-	audioplayer.src = "./narratives/arthur_the_rat/Arthur.mp3";
 	audioplayer.textContent = "Your browser does not support audio files.";
 
 	article1.appendChild(audioplayer);
 	playbackDiv.appendChild(article1);
 
 	const image = document.createElement('img');
-	image.src = source_img;
-	image.alt = source_title + " thumbnail";
+	image.id = "audio_img";
 
 	const article2 = document.createElement('article');
 	article2.appendChild(image);
@@ -102,29 +102,40 @@ narrativesButton.addEventListener("click", function(event){
 	narrativesPage.appendChild(playbackDiv);
 
 	document.getElementById("header").innerHTML = "narratives";
-	
+
+	var diaryImg = document.createElement('img');
+	diaryImg.src = diary.imgLink;
+	diaryImg.style.width = '20%';
+	diaryImg.title = diary.title;
+	//diaryImg.addEventListener("click", updateSelectedNarrative(diary));
+	albumsDiv.append(diaryImg);
+
+	var hub51Img = document.createElement('img');
+	hub51Img.src = hub51.imgLink;
+	hub51Img.style.width = '20%';
+	hub51Img.title = hub51.title;
+	//hub51Img.addEventListener("click", updateSelectedNarrative(hub51));
+	albumsDiv.append(hub51Img);
+
+	var sixFlagsImg = document.createElement('img');
+	sixFlagsImg.id = "sixFlagsImg";
+	sixFlagsImg.src = sixFlags.imgLink;
+	sixFlagsImg.style.width = '20%';
+	sixFlagsImg.title = sixFlags.title;
+	albumsDiv.append(sixFlagsImg);
 });
+
+
+function updateSelectedNarrative(narr) {
+	document.getElementById('audio_title').textContent = narr.title;
+	document.getElementById('audio_player').src = narr.mp3;
+	document.getElementById('audio_img').src = narr.imgLink;
+	document.getElementById('audio_img').alt = narr.title + " thumbnail";
+}
 
 //loads collages page
 collagesButton.addEventListener("click", function(event){
 	replaceChildAll();
-
-
-	/*const fs = require('fs');
-
-	const narrPath = './narratives';
-
-	fs.readdir(narrPath, (err, files) => {
-
-		if (err) {
-			console.error('Error reading directory:', err);
-			return;
-		}
-		
-		files.forEach(file => {
-			console.log(file);
-		});
-	});*/
 
 	//repeat for all files
 	const source = "collages/football_player_ad.png";

@@ -28,7 +28,7 @@ hr {
 
 .sidebar {
 	height: 100vh;/*full height of the viewport*/
-	width: 20vw;
+	width: 40vw;
 	position: fixed;
 	z-index: 1;
 	top: 10%;
@@ -68,6 +68,7 @@ footer a, small {
 .material-symbols-outlined { color: var(--custom-accent);}
 
 html {
+	height: 100vh;
 	background-size: 100%;
 	background-color: transparent;
 	background-image: linear-gradient(114deg, var(--custom-gradient-1) 0%, var(--custom-gradient-2) 100%);
@@ -77,7 +78,7 @@ html {
 
 section {
 	margin-top: 0;
-	margin-left: 20%;
+	margin-left: 30%;
 	margin-right: 5%;
 }
 
@@ -159,7 +160,6 @@ textarea {
 }
 
 .frame img {
-	border-radius: 5px 5px 0 0;
 	width:100%;
 }
 
@@ -178,11 +178,6 @@ textarea {
   display: none; /* Hide the element if it's empty */
 }
 
-#narratives {
-	margin: 10% auto;
-	width: 60%;
-}
-
 #playback audio {width:100%;}
 
 #playback {
@@ -191,8 +186,6 @@ textarea {
 
 #playback img {
 	width: 50%;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-	border-radius: 5px;
 }
 
 #playback article {
@@ -204,4 +197,9 @@ textarea {
 
 #header {
 	text-align: center;
+}
+
+img {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
 }
