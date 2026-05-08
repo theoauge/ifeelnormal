@@ -1,12 +1,11 @@
 const homeButton = document.getElementById("homeButton");
-const homePage = document.getElementById("home");
+const main = document.getElementById("home");
 const narrativesButton = document.getElementById("narrativesButton");
-const narrativesPage = document.getElementById("narratives");
 const collagesButton = document.getElementById("collagesButton");
-const collagesPage = document.getElementById("collages");
 const sayhiButton = document.getElementById("sayhiButton");
 const sayhiPage = document.getElementById("sayhi");
 const narrativesImg = document.getElementsByClassName("album");
+const body = document.getElementById("body");
 
 
 function autoGrow(element) {
@@ -33,12 +32,25 @@ function joke() {
 	alert("nice try")
 }
 
+window.addEventListener('load', function(){
+	replaceChildAll();
+	homePage();
+});
+
 //combine with window listener
 homeButton.addEventListener("click", function(event){
 	replaceChildAll();
-	homePage.hidden = false;
-	document.getElementById("header").innerHTML = "ifeelnormal.com";
+	homePage();
 });
+
+function homePage() {
+	var keeferImg = document.createElement('img');
+	keeferImg.src = 'keefer.jpg';
+	keeferImg.title = "keefer";
+	keeferImg.className = "keefer";
+	document.getElementById('home').append(keeferImg);
+	document.getElementById("subtitle").innerHTML = "ifeelnormal.com";
+}
 
 function ToTitleCase(str) {
 	return str.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
@@ -98,10 +110,10 @@ narrativesButton.addEventListener("click", function(event){
 	article2.appendChild(image);
 	playbackDiv.appendChild(article2);
 
-	narrativesPage.appendChild(albumsDiv);
-	narrativesPage.appendChild(playbackDiv);
+	main.appendChild(albumsDiv);
+	main.appendChild(playbackDiv);
 
-	document.getElementById("header").innerHTML = "narratives";
+	document.getElementById("subtitle").innerHTML = "narratives";
 
 	var diaryImg = document.createElement('img');
 	diaryImg.src = diary.imgLink;
@@ -133,9 +145,34 @@ function updateSelectedNarrative(narr) {
 	document.getElementById('audio_img').alt = narr.title + " thumbnail";
 }
 
+function imageFullSize() {
+	console.log("test");
+}
+
 //loads collages page
 collagesButton.addEventListener("click", function(event){
 	replaceChildAll();
+
+	const enlargedFrame = document.createElement('article');
+	enlargedFrame.hidden = true;
+	enlargedFrame.id = "enlargedFrame";
+
+	const X = document.createElement('span');
+	X.id = 'X';
+	X.className = 'material-symbols-outlined';
+	X.innerHTML = 'cancel';
+
+	X.addEventListener("click", function(event){
+		document.getElementById('enlargedFrame').hidden = true;
+	});
+	enlargedFrame.appendChild(X);
+
+	const bigImage = document.createElement('img');
+	bigImage.alt = 'big image';
+	bigImage.id = "bigImage";
+	enlargedFrame.appendChild(bigImage);
+
+	body.appendChild(enlargedFrame);
 
 	//repeat for all files
 	const source = "collages/football_player_ad.png";
@@ -146,36 +183,36 @@ collagesButton.addEventListener("click", function(event){
 
 	const image = document.createElement('img');
 	image.src = source;
-	image.alt = source_title
+	image.alt = source_title;
 	frame.appendChild(image);
 
 	const title = document.createElement('h4');
 	title.className = "collage_title";
 	title.textContent = source_title;
+
+	frame.addEventListener("click", function(event){
+		document.getElementById('bigImage').src = image.src;
+		document.getElementById('enlargedFrame').hidden = false;
+	});
+
 	frame.appendChild(title);
 
-	collagesPage.appendChild(frame);
+	main.appendChild(frame);
 
-	document.getElementById("header").innerHTML = "collages";
+	document.getElementById("subtitle").innerHTML = "collages";
 });
+
 
 
 sayhiButton.addEventListener("click", function(event){
 	replaceChildAll();
 	sayhiPage.hidden = false;
-	document.getElementById("header").innerHTML = "say hi";
-});
-
-window.addEventListener('load', function(){
-	replaceChildAll();
-	homePage.hidden = false;
-	document.getElementById("header").innerHTML = "ifeelnormal.com";
+	document.getElementById("subtitle").innerHTML = "say hi";
 });
 
 function replaceChildAll() {
-	homePage.hidden = true;
-	narrativesPage.replaceChildren();
-	collagesPage.replaceChildren();
+	main.replaceChildren();
+	main.hidden = false;
 	sayhiPage.hidden = true;
 }
 
@@ -190,4 +227,5 @@ function changeColor(t, g1, g2, a) {
 	document.documentElement.style.setProperty('--custom-gradient-2', g2);
 	document.documentElement.style.setProperty('--custom-accent', a);
 }
+
 

@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<!--
-TODO	
-*what is keefer's email?
-commit to git
--->
+<!doctype html>
 
-<html>
+<html lang="en">
 <head>
-	<h1 id="header"></h1>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title id="title">ifeelnormal</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
-<body>
-	<nav class="sidebar">
+<body id="body">
+	<h1 id="subtitle"></h1>
+	<nav class="sidebar col-4 col-md-3">
 		<div class="button">
 			<a href="#" id="homeButton">
 			<span class="material-symbols-outlined">home</span>
@@ -49,29 +48,9 @@ commit to git
 		</a>
 		</div>
     </nav>
-	<div class="main">
-		<section id="home">
-		
-		<!-- <div style="display:flex; justify-content:center; width:100%; margin:auto; ">
-					
-			<form style="width:50%">
-				<h4>colour pallette:</h4>
-			(text color, gradient 1, gradient 2, accent color)
-			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeColor('#493267','#F7EBD7', '#E3BEA1', '#85A9A4')">desert
-			</label>
-			<label class="radio-container">
-				<input name="font" type="radio" onclick="changeColor('#333333', '#70EFF1', '#0A88C5', '#333333')">original
-			</label>
-			</form>
-		</div> -->
-		<img src="keefer.jpg" style="max-width:100%; height:auto; display: block;">
-		</section>
-		
-		<section id="narratives">
-		</section>
-		
-		<section id="collages">
+	<div class="main col-8 col-md-9">
+		<section id="home" style="justify-content: right;">
+			<img src="keefer.jpg">
 		</section>
 	
 		<section id="sayhi">
@@ -93,6 +72,7 @@ commit to git
 	</div>
 	
 	 <script src="scripts.js"></script>
+	 <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <footer>
 	<small>&copy; 2026 Keefer Schoon</small>
