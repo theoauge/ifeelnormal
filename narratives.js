@@ -22,7 +22,7 @@ class Narrative {
 
     getCurrentTrackURL(){
         let trackName = this.currentTrack.replace(':', '');
-        return this.sourceFolder + "MP3s/" + trackName + '.mp3';
+        return this.sourceFolder + trackName + '.mp3';
     }
 
     toggleActive() {
