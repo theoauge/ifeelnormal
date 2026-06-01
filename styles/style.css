@@ -74,13 +74,6 @@ hr {
 	color: var(--custom-text);
 }
 
-
-/*main*/
-.main {
-	float:left;
-}
-
-
 ul li a {
 	font-size:16px;
 	text-decoration:none;
@@ -201,23 +194,6 @@ textarea {
 
 .size-guide:empty {
   display: none; /* Hide the element if it's empty */
-}
-
-#playback audio {width:100%;}
-
-#playback {
-	display:flex;
-}
-
-#playback img {
-	width: 50%;
-}
-
-#playback article {
-	display: flex;
-	width: 50%;
-	flex-direction: column;
-	justify-content: end;
 }
 
 footer {

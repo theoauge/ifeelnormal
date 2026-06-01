@@ -33,13 +33,13 @@ function joke() {
 }
 
 window.addEventListener('load', function(){
-	replaceChildAll();
+	main.replaceChildren();
 	homePage();
 });
 
 //combine with window listener
 homeButton.addEventListener("click", function(event){
-	replaceChildAll();
+	main.replaceChildren();
 	homePage();
 });
 
@@ -56,102 +56,101 @@ function ToTitleCase(str) {
 	return str.toLowerCase().replace(/\b\w/g, s => s.toUpperCase());
 }
 
-class Narrative {
-	
-	constructor(srcFolder, img) {
-		this.folder = srcFolder;
-
-		this.title = srcFolder.replaceAll('_', ' ').replaceAll('/', '').replaceAll('.','').replace('narratives', '');
-		this.title = ToTitleCase(this.title);
-
-		this.imgLink = img;
-		this.tracks = [];
-		this.mp3;
-	}
-}
-
+//narratives global variable defined in narratives.js
+//
 narrativesButton.addEventListener("click", function(event){
-	replaceChildAll();
-
-	const diaryPath = './narratives/diary_of_a_college_hunk/';
-	const diary = new Narrative(diaryPath,diaryPath + "cover_art.png");
-
-	const hubPath = './narratives/hub_51/';
-	const hub51 = new Narrative(hubPath, hubPath + "cover_art.jpg");
-
-	const sixFlagsPath = './narratives/six_flags_great_america/';
-	const sixFlags = new Narrative(sixFlagsPath, sixFlagsPath + "cover_art.jpg");
-
-	const albumsDiv = document.createElement('div');
-	albumsDiv.style.display = "flex";
+	main.replaceChildren();
 
 	const playbackDiv = document.createElement('div');
 	playbackDiv.id = "playback";
+	playbackDiv.className = "col-md-5";
 
-	const article1 = document.createElement('article');
-
-	const title = document.createElement('h3');
+	/*current album title*/
+	const title = document.createElement('h5');
 	title.id = "audio_title";
 
-	article1.appendChild(title);
+	const author = document.createElement('h6');
+	author.id = "audio_author";
 
-	var audioplayer = document.createElement('audio');
+	const trackTitle = document.createElement('h6');
+	trackTitle.id = "audio_track_title";
+
+	playbackDiv.appendChild(title);
+	playbackDiv.appendChild(author);
+	playbackDiv.appendChild(trackTitle);
+	
+	const audioplayer = document.createElement('audio');
 	audioplayer.id = "audio_player";
 	audioplayer.controls = true;
 	audioplayer.textContent = "Your browser does not support audio files.";
 
-	article1.appendChild(audioplayer);
-	playbackDiv.appendChild(article1);
+	var previousButton = document.createElement('span');
+	previousButton.id = 'previousButton';	
+	previousButton.className = "material-symbols-outlined";
+	previousButton.innerHTML = "fast_rewind";
 
+	previousButton.addEventListener("click", function(event) {
+		narratives.find((element) => element.active == true).previousTrack();
+	});
+
+	var nextButton = document.createElement('span');
+	nextButton.id = 'nextButton';
+	nextButton.className = "material-symbols-outlined";
+	nextButton.innerHTML = "fast_forward";
+
+	nextButton.addEventListener("click", function(event) {
+		narratives.find((element) => element.active == true).nextTrack();
+	});
+
+	playbackDiv.appendChild(audioplayer);
+	playbackDiv.appendChild(previousButton);
+	playbackDiv.appendChild(nextButton);
+	
+	var imageContainer = document.createElement('div');
+	imageContainer.className = "col-md-6"
+	imageContainer.id = "imgContainer";
 	const image = document.createElement('img');
 	image.id = "audio_img";
-
-	const article2 = document.createElement('article');
-	article2.appendChild(image);
-	playbackDiv.appendChild(article2);
-
-	main.appendChild(albumsDiv);
-	main.appendChild(playbackDiv);
-
+	
+	imageContainer.appendChild(image);
+	
+	var testContainer = document.createElement('div');
+	testContainer.appendChild(playbackDiv);
+	testContainer.appendChild(imageContainer);
+	main.appendChild(testContainer);
+	
 	document.getElementById("subtitle").innerHTML = "narratives";
+	
+	
+	const trackList = document.createElement('div');
+	trackList.id = 'trackList';
+	trackList.className = 'flex-column';
 
-	var diaryImg = document.createElement('img');
-	diaryImg.src = diary.imgLink;
-	diaryImg.style.width = '20%';
-	diaryImg.title = diary.title;
-	//diaryImg.addEventListener("click", updateSelectedNarrative(diary));
-	albumsDiv.append(diaryImg);
+	const albumsDiv = document.createElement('div');
+	albumsDiv.id = 'discography';
+	albumsDiv.className = 'flex-column';
+	
+	narratives.forEach(element => {
+		var img = document.createElement('img');
+		img.src = element.getImageURL();
+		img.style.width = '20%';
+		img.title = element.title;
+		img.addEventListener("click", function(event) {
+			changeActiveNarrative(element);
+		});
+		albumsDiv.appendChild(img);
+	});
 
-	var hub51Img = document.createElement('img');
-	hub51Img.src = hub51.imgLink;
-	hub51Img.style.width = '20%';
-	hub51Img.title = hub51.title;
-	//hub51Img.addEventListener("click", updateSelectedNarrative(hub51));
-	albumsDiv.append(hub51Img);
+	main.appendChild(trackList);
+	main.appendChild(albumsDiv);
 
-	var sixFlagsImg = document.createElement('img');
-	sixFlagsImg.id = "sixFlagsImg";
-	sixFlagsImg.src = sixFlags.imgLink;
-	sixFlagsImg.style.width = '20%';
-	sixFlagsImg.title = sixFlags.title;
-	albumsDiv.append(sixFlagsImg);
+	changeActiveNarrative(narratives[0]);
 });
 
 
-function updateSelectedNarrative(narr) {
-	document.getElementById('audio_title').textContent = narr.title;
-	document.getElementById('audio_player').src = narr.mp3;
-	document.getElementById('audio_img').src = narr.imgLink;
-	document.getElementById('audio_img').alt = narr.title + " thumbnail";
-}
-
-function imageFullSize() {
-	console.log("test");
-}
-
 //loads collages page
 collagesButton.addEventListener("click", function(event){
-	replaceChildAll();
+	main.replaceChildren();
 
 	const enlargedFrame = document.createElement('article');
 	enlargedFrame.hidden = true;
@@ -205,16 +204,9 @@ collagesButton.addEventListener("click", function(event){
 
 
 sayhiButton.addEventListener("click", function(event){
-	replaceChildAll();
-	sayhiPage.hidden = false;
+	main.replaceChildren();
 	document.getElementById("subtitle").innerHTML = "say hi";
 });
-
-function replaceChildAll() {
-	main.replaceChildren();
-	main.hidden = false;
-	sayhiPage.hidden = true;
-}
 
 
 function changeFont(fontName) {

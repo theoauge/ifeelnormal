@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title id="title">ifeelnormal</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/narratives.css">
 	<link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
@@ -48,34 +49,18 @@
 		</a>
 		</div>
     </nav>
-	<div class="main col-8 col-md-9">
-		<section id="home" style="justify-content: right;">
+	<div class="main col-8 col-md-9" style="float:left;">
+		<section id="home">
 			<img src="keefer.jpg">
 		</section>
-	
-		<section id="sayhi">
-		
-		<form action="/send_email.php" method=POST>
-			<label for="name">name *</label>
-			<input placeholder="name..." required="true" type="text" id="name" name="name">
-
-			<label for="email">email *</label>
-			<input placeholder="email..." required="true" type="text" id="email" name="email">
-
-			<label for="message">message *</label>
-			<textarea placeholder="message..." required="true" rows="1" oninput="autoGrow(this)"></textarea>
-	  
-			<input type="submit" value="send">
-		</form>
-		</section>
-	
 	</div>
 	
-	 <script src="scripts.js"></script>
+	 <script src="pageSetup.js"></script>
+	 <script src="narratives.js"></script>
 	 <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<footer>
+<!--<footer>
 	<small>&copy; 2026 Keefer Schoon</small>
 	<a href="https://www.instagram.com/keefer_spoon/?hl=en" target="_blank" rel="noopener noreferrer">instagram</a>
-</footer>
+</footer>-->
 </html>

@@ -1,0 +1,26 @@
+.narratives {
+    color: var(--custom-text);
+}
+
+#playback audio {
+	width:100%;
+}
+
+#playback {
+	float:left;
+}
+
+#audio_img {
+	max-width: 100%;
+}
+
+#imgContainer {
+	float:left;
+}
+
+#disco {
+}
+
+#previousButton, #nextButton {
+	padding-right: 5px;
+}
